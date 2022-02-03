@@ -15,16 +15,22 @@
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  """
 
-from argparse import ArgumentParser
+import sys
+
+import cv2
+import imutils
+
+from modules.detect import detect
 
 
-def args_parser():
-    arg_parse = ArgumentParser()
-    arg_parse.add_argument("-v", "--video", default=None,
-                           help="path to Video File ")
-    arg_parse.add_argument("-i", "--image", default=None,
-                           help="path to Image File ")
+def detect_by_image_path(path):
+    image = cv2.imread(path)
 
-    args = vars(arg_parse.parse_args())
+    image = imutils.resize(image, width=min(800, image.shape[1]))
 
-    return args
+    result_image = detect(image)
+
+    key = cv2.waitKey(0)
+    if key == ord('q'):
+        cv2.destroyAllWindows()
+        sys.exit("[INFO] User Requested An Interrupt.\n[INFO] Quitting...")

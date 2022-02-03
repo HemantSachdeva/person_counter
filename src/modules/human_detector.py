@@ -15,10 +15,12 @@
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  """
 
+from modules.detect_by_image_path import detect_by_image_path
 from modules.detect_by_video_path import detect_by_video_path
 
 
 def human_detector(args):
+    image_path = args["image"]
     video_path = args['video']
 
     writer = None
@@ -26,3 +28,8 @@ def human_detector(args):
         print('[INFO] Opening Video from path.')
         print('[INFO] Press q to close window.')
         detect_by_video_path(video_path, writer)
+
+    elif image_path is not None:
+        print('[INFO] Opening Image from path.')
+        print('[INFO] Press q to close window.')
+        detect_by_image_path(image_path)
