@@ -37,11 +37,43 @@ If you want to install latest version of dependencies, run the following command
 pip install -r requirements.txt --upgrade
 ```
 
-or 
+or
 
 ```
 pip install imutils opencv-python
 ```
+
+## Usage
+
+    usage: main.py [-h] [-v VIDEO] [-i IMAGE]
+
+    options:
+    -h, --help            show this help message and exit
+    -v VIDEO, --video VIDEO
+                            path to Video File
+    -i IMAGE, --image IMAGE
+                            path to Image File
+
+Example:
+
+    > python main.py -v assets/output/people.mp4
+    [INFO] Opening Image from path.
+    [INFO] Press q to close window.
+    [INFO] User Requested An Interrupt.
+    [INFO] Quitting...
+
+Output:
+
+![detect_by_image.jpg](assets/output/detect_by_image.png)
+
+    > python main.py -i assets/output/people.jpg
+    [INFO] Opening Video from path.
+    [INFO] Press q to close window.
+    Detecting people...
+    [INFO] User Requested An Interrupt.
+    [INFO] Quitting...
+
+![detect_by_video.mp4](assets/output/detect_by_video.png)
 
 ### Want to contribute to this project?
 
